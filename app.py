@@ -11,7 +11,6 @@ st.write("---")
 st.subheader("1. Bevételek")
 osszes_bevetel = 0
 
-# Itt írd át a neveket arra, amire szeretnéd (pl. "Fizetés", "Cafeteria", stb.)
 forrasok = {
     "Genpact": 0,
     "Jogiroda": 0,
@@ -33,11 +32,11 @@ fokonyv = nyito + osszes_bevetel
 st.metric("Aktuális keret összesen", f"{fokonyv} Ft")
 st.write("---")
 
-# --- UTALÁSOK (Azonnali részegyenleggel) ---
+# --- UTALÁSOK (Javítva az idézőjel!) ---
 st.subheader("B Revolut")
-szamla_a = st.number_input("'B Revolut, value=0, step=1000)
+szamla_a = st.number_input("B Revolut", value=0, step=1000)
 fokonyv -= szamla_a
-st.warning(f"Egyenleg 'B Revolut' után: {fokonyv} Ft")
+st.warning(f"Egyenleg B Revolut után: {fokonyv} Ft")
 
 szamla_b = st.number_input("T Revolut", value=0, step=1000)
 fokonyv -= szamla_b
@@ -57,10 +56,10 @@ for i in range(1, 4):
         st.write(f"Egyenleg tétel után: **{fokonyv} Ft**")
 st.write("---")
 
-# --- Dnek ---
-st.subheader("4. Dnek utalva (max 6)")
+# --- D-nek utalva ---
+st.subheader("4. D-nek utalva (max 6)")
 for j in range(1, 7):
-    fiam = st.number_input(f"Fiam {j}. tétel", value=0, step=500, key=f"f_{j}")
+    fiam = st.number_input(f"D {j}. tétel", value=0, step=500, key=f"f_{j}")
     fokonyv -= fiam
     if fiam > 0:
         st.write(f"Aktuális egyenleg: **{fokonyv} Ft**")
